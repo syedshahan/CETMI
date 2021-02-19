@@ -4,7 +4,7 @@ COVID-19 Exposure Tracking Management Interface
 Technologies:
         Python  |
         FLask  |
-        Mysql  |
+        Mysql  
         
 Main Points:
         Ability to Map Different Areas of Exposure on live Google Maps  | 
