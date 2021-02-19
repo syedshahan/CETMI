@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+
+{% block app_content %}
+
+
+		<title> Survey </title> 		 
+		<div align="center"> 
+		<div align="center" class="border"> 
+			<div class="header"> 
+				<h1 class="word">Survey</h1> 
+			</div></br></br></br> 
+			<h2 class="word"> 
+				<form action="{{ url_for('survey') }}" method="post"> 
+				<div class='form-group' >{{ msg }}</div> 
+					<input id="userName"  name="userName" type="text" placeholder="Enter Your Username" class="textbox"/></br></br> 
+					<input id="phone"  name="phone" type="text" placeholder="Enter Your Phone Number" class="textbox"/></br></br> 
+					<input id="address" name="address" type="text" placeholder="Enter Your Address" class="textbox"/></br></br> 
+					<input id="age" name="age"  type="text" placeholder="Enter Your Age" class="textbox"/></br></br>
+                    <label for="test"><h2>Test</h2></label>
+                            <select id="test" name="test">
+                                <option value="positive">POSITIVE</option>
+                                <option value="negative">NEGATIVE</option>
+							</select>
+					<label for="dtest"><h2>Diabeties</h2></label>
+							<select id="dtest" name="dtest">
+								<option value="positive">POSITIVE</option>
+								<option value="negative">NEGATIVE</option>
+							</select>
+							<br/>
+					<label for="ctest"><h2>Cancer</h2></label>
+							<select id="ctest" name="ctest">
+								<option value="positive">POSITIVE</option>
+								<option value="negative">NEGATIVE</option>
+							</select>
+					<label for="htest"><h2>Heart Patient</h2></label>
+							<select id="htest" name="htest">
+								<option value="positive">Yes</option>
+								<option value="negative">No</option>
+							</select>
+					
+					<label for="group"><h2>Blood Group</h2></label>
+                            <select id="group" name="group">
+                                <option value="A+">A+</option>
+								<option value="A-">A-</option>
+								<option value="B-">B-</option>
+								<option value="B+">B+</option>
+								<option value="AB-">AB-</option>
+								<option value="AB+">AB+</option>
+								<option value="O-">O-</option>
+								<option value="O+">O+</option>
+							</select>
+							<br/><br/>
+                    <input type="submit" class="btn btn-primary" value="Proceed"></br> 
+				</form> 
+			</h2> 
+		</div> 
+		</div> 
+	</body> 
+
+{% endblock %}

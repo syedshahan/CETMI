@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block app_content %}
+<h1> QUARANTINE CENTERS </h1>
+<table class="table table-hover"  border=1>
+  <tr>
+    <th>ID</th>
+    <th> Name </th>
+    <th>BEDS</th>
+    <th>LOCATION</th>
+  </tr>
+    {% for user in userDetails %}
+    <tr>
+      <td width="70px">  {{user[0]}} </td>
+      <td width="70px">  {{user[1]}} </td>
+      <td width="70px">  {{user[2]}} </td>
+      <td width="70px">  {{user[3]}} </td>
+    </tr>
+    {% endfor %}
+  </table>
+{% endblock %}

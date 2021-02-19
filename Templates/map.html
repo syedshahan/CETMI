@@ -1,0 +1,130 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Index</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='style.css') }}"
+    />
+    <style type="text/css">
+      #map {
+        height: 100%;
+        width: 100%;
+      }
+
+      html,
+      body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+      a.button {
+        width: 200px;
+        font-size: 18px;
+        padding: 15px;
+        border: solid black;
+        background: #000;
+        color: #fff;
+        cursor: pointer;
+
+      }
+
+      a:hover {
+        background: #ddd;
+        color: black;
+      }
+    </style>
+  </head>
+  <body>
+    <nav aria-label="...">
+       <ul class="pager">
+          <li><a href="{{ url_for('hospital') }}" type="button">HOSPITALS</a> </li>
+          <li><a href="{{ url_for('er') }}" type="button">EMERGENCY CONTACT</a> </li>
+       </ul>
+    </nav>
+
+    <div id="map"></div>
+    
+    <script>
+      var map, infoWindow;
+
+      const cmap = {
+        modeltown: {
+          center: { lat: 31.485189412777867, lng: 74.3262550871404 },
+          population: 100,
+        },
+        township: {
+          center: { lat: 31.44865599040267, lng: 74.30879062210971 },
+          population: 200,
+        },
+        johar: {
+          center: { lat: 31.472379091926907, lng: 74.27867871933894 },
+          population: 600,
+        },
+      };
+
+      function initMap() {
+        map = new google.maps.Map(document.getElementById("map"), {
+          center: { lat: -34.397, lng: 150.644 },
+          zoom: 13.5,
+          mapTypeId: "terrain",
+        });
+        infoWindow = new google.maps.InfoWindow();
+
+        for (const c in cmap) {
+          const cCircle = new google.maps.Circle({
+            strokeColor: "#FF0000",
+            strokeOpacity: 2,
+            strokeWeight: 2,
+            fillColor: "#FF0000",
+            fillOpacity: 0.35,
+            map,
+            center: cmap[c].center,
+            radius: Math.sqrt(cmap[c].population) * 100,
+          });
+        }
+
+        // Try HTML5 geolocation.
+        if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(
+            function (position) {
+              var pos = {
+                lat: position.coords.latitude,
+                lng: position.coords.longitude,
+              };
+
+              infoWindow.setPosition(pos);
+              infoWindow.setContent("Location Found.");
+              infoWindow.open(map);
+              map.setCenter(pos);
+            },
+            function () {
+              handleLocationError(true, infoWindow, map.getCenter());
+            }
+          );
+        } else {
+          // Browser doesn't support Geolocation
+          handleLocationError(false, infoWindow, map.getCenter());
+        }
+      }
+
+      function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+        infoWindow.setPosition(pos);
+        infoWindow.setContent(
+          browserHasGeolocation
+            ? "Error: The Geolocation service failed."
+            : "Error: Your browser doesn't support geolocation."
+        );
+        infoWindow.open(map);
+      }
+    </script>
+
+    <script
+      async
+      defer
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAiUU0dIaEgVw6SVLIzAr77msYm0Za2TPg&callback=initMap"
+    ></script>
+
+    <div class="container">{{ mymap.html }}</div>
+  </body>
+</html>

@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block app_content %}
+<h1> EMERGENCY CONTACT </h1>
+
+<table class="table table-hover"  border=1>
+  <tr>
+    <th> AMBULANCE CONTACT</th>
+    <th> POLICE CONTACT</th>
+    <th>Covid Contact</th>
+  </tr>
+  <tr>
+    {% for user in userDetails %}
+      <td width="70px"> {{user[0]}} </td>
+      <td width="70px"> {{user[1]}} </td>
+      <td width="70px"> {{user[2]}} </td>
+    </tr>
+    {% endfor %}
+  </table>
+{% endblock %}

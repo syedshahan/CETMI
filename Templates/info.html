@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block app_content %}
+<nav aria-label="...">
+    <ul class="pager">
+        <li><a href="{{ url_for('my_map') }}">MAP</a></li><br/><br/>
+        <li><a href="{{ url_for('labs') }}">LABS</a> </li><br/><br/>
+        <li><a href="{{ url_for('doctors') }}">DOCTORS</a> </li><br/><br/>
+        <li><a href="{{ url_for('hospital') }}">HOSPITALS</a> </li><br/><br/>
+        <li><a href="{{ url_for('er') }}">EMERGENCY CONTACT</a> </li><br/><br/>
+        <li><a href="{{ url_for('qCenter') }}">QUARANTINE CENTERS</a> </li><br/><br/>
+    </ul>
+</nav>
+{% endblock %}

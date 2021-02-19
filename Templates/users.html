@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block app_content %}
+
+		<title> Users </title> 		 
+		<div align="center"> 
+		<div align="center" class="border"> 
+			<div class="header"> 
+				<h1 class="word">Welcome</h1> 
+			</div></br></br></br> 
+			<h2 class="word"> 
+				<form action="{{ url_for('user_details') }}" method="post"> 
+				<div  class = 'form-group' >{{ msg }}</div> 
+					<input id="name" name="name"  type="text" placeholder="Enter Your Name" class="textbox"/></br></br> 
+					<input id="email" name="email"	 type="text" placeholder="Enter Your Email ID" class="textbox"/></br></br> 
+					<input type="submit" class="btn btn-primary" value="Proceed"></br> 
+				</form> 
+			</h2> 
+		</div> 
+		</div> 
+
+
+{% endblock %}

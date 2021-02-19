@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block app_content %}
+		<title> Red Zone </title> 		 
+		<div align="center"> 
+		<div align="center" class="border"> 
+			<div class="header"> 
+				<h1 class="word">Red Zone</h1> 
+			</div></br></br></br> 
+			<h2 class="word"> 
+				<form action="{{ url_for('admin') }}" method="post"> 
+				<div class="msg">{{ msg }}</div> 
+					<input id="latitude" name="latitude" type="text" placeholder="Enter latitude" class="textbox"/></br></br> 
+					<input id="longitude" name="longitude" type="text" placeholder="Enter longitude" class="textbox"/></br></br> 
+					<input id="population" name="population" type="text" placeholder="Enter population" class="textbox"/></br></br>
+					<input type="submit" class="btn" value="Proceed"></br> 
+				</form> 
+			</h2> 
+		</div> 
+		</div> 
+
+
+{% endblock %}
